@@ -1,21 +1,21 @@
-.text-block {
+.textBlock {
   width: 40%;
   margin: 6rem auto;
   padding: 2rem;
 
-  h3 {
+  &__title {
     text-align: center;
     font-size: 2rem;
     margin: 0;
   }
 
-  p {
+  &__content {
     text-align: center;
     padding: 0 6rem;
     font-size: 1rem;
   }
 
-  .buttons {
+  &__buttons {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -29,6 +29,10 @@
       padding: 0.75rem 1.5rem;
       font-weight: bold;
       border-radius: 0.4rem;
+    }
+    a:hover {
+      background-color: #f9af05;
+      color: white;
     }
   }
 }
