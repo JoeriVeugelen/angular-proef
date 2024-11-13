@@ -13,7 +13,7 @@
 
   .grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 2rem;
     width: 65vw;
     margin: 0 auto;
@@ -50,6 +50,18 @@
         font-size: 0.5rem;
         vertical-align: middle;
       }
+    }
+  }
+
+  @media (min-width: 768px) {
+    .grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .grid {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
     }
   }
 }
