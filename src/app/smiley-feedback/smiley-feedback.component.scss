@@ -48,4 +48,63 @@
       }
     }
   }
+
+  &__form {
+    margin: 6rem auto;
+    h2 {
+      text-align: center;
+    }
+    textarea {
+      width: 100%;
+      min-height: 100px;
+      border-radius: 0.3rem;
+      font: inherit;
+      padding: 0.5rem;
+
+      &.error {
+        border-color: #f65455;
+      }
+    }
+    .bottomContent {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top: 0.5rem;
+
+      p {
+        font-size: 0.8rem;
+        color: #bebfc9;
+      }
+
+      button {
+        padding: 0.75rem 1.5rem;
+        background-color: #f9af05;
+        outline: none;
+        border: none;
+        color: white;
+        font-weight: bold;
+        font: inherit;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
+    .errorMessage {
+      color: #f65455;
+      margin-top: 5px;
+      font-size: 14px;
+    }
+  }
+
+  &__success {
+    margin: 6rem auto;
+    background-color: #d5f5db;
+    padding: 0.5rem 1rem;
+
+    p {
+      color: #4cd54d;
+    }
+  }
 }

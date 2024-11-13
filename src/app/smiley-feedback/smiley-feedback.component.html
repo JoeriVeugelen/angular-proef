@@ -6,12 +6,33 @@
       <button
         (click)="selectFace(face)"
         [style.background-color]="face.backgroundColor"
-        [class.selected]="selectedFace === face"
+        [class.selected]="isFaceSelected(face)"
+        [attr.aria-label]="'Select rating'"
       >
         <fa-icon [style.color]="face.iconColor" [icon]="face.icon"></fa-icon>
       </button>
       }
     </div>
   </div>
-  // Form here
+  @if (selectedFace) {
+  <form
+    [formGroup]="feedbackForm"
+    (ngSubmit)="onSubmit()"
+    class="feedback__form"
+  >
+    <h2>Geef je graag wat meer uitleg?</h2>
+    <textarea formControlName="comment" [class.error]="showError"></textarea>
+    @if (showError) {
+    <div class="errorMessage">Mag niet leeg zijn.</div>
+    }
+    <div class="bottomContent">
+      <p>Wij verwerken uw gegevens comform onze privacy policy</p>
+      <button type="submit">Verstuur</button>
+    </div>
+  </form>
+  } @if (formSubmittedSuccessfully){
+  <div class="feedback__success">
+    <p>Feedback met succes verzonden!</p>
+  </div>
+  }
 </div>
