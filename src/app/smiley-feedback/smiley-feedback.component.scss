@@ -1,6 +1,6 @@
 .feedback {
+  max-width: 1000px;
   width: 100%;
-  max-width: 600px;
   margin: 4rem auto 0 auto;
 
   &__smiley {
@@ -59,12 +59,13 @@
 
     textarea {
       display: block;
-      width: 80%;
+      width: 90%;
       margin: 0 auto;
       min-height: 100px;
       border-radius: 0.3rem;
       font: inherit;
       padding: 0.5rem;
+      box-sizing: border-box;
 
       &.error {
         border-color: #f65455;
@@ -72,7 +73,7 @@
     }
 
     .bottomContent {
-      width: 80%;
+      width: 90%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -123,13 +124,15 @@
     margin: 6rem auto;
     background-color: #d5f5db;
     padding: 0.5rem 1rem;
+    box-sizing: border-box;
     p {
       color: #4cd54d;
+      width: 100%;
     }
   }
 
   @media (min-width: 768px) {
-    width: 60%;
+    width: 80%;
 
     &__smiley {
       padding: 3rem 0rem;
@@ -168,38 +171,16 @@
 
     &__success {
       width: 100%;
+
+      p {
+        width: 100%;
+      }
     }
   }
 
   @media (min-width: 1024px) {
-    width: 80%;
     &__facesContainer {
       gap: 2.5rem;
-
-      button {
-        width: 4rem;
-        height: 4rem;
-        font-size: 2rem;
-      }
-    }
-
-    &__form {
-      textarea {
-        width: 100%;
-      }
-
-      .bottomContent {
-        width: 100%;
-        flex-direction: row;
-        text-align: left;
-      }
-
-      .errorMessage {
-        width: 100%;
-      }
-    }
-    &__success {
-      width: 100%;
     }
   }
 }
