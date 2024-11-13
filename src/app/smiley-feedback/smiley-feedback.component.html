@@ -1,0 +1,19 @@
+<div class="feedback">
+  <div class="smiley-feedback">
+    <h2>{{ question }}</h2>
+    <div class="faces-container">
+      <button
+        *ngFor="let face of faces"
+        (click)="selectFace(face)"
+        [style.background-color]="face.backgroundColor"
+        [class.selected]="selectedFace === face"
+        class="face-button"
+      >
+        <fa-icon [style.color]="face.iconColor" [icon]="face.icon"></fa-icon>
+      </button>
+    </div>
+  </div>
+  <!-- <p *ngIf="selectedFace" class="feedback-message">
+    You selected: <fa-icon [icon]="selectedFace.icon"></fa-icon>
+  </p> -->
+</div>
