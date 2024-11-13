@@ -13,6 +13,7 @@ import {
   FontAwesomeModule,
 } from '@fortawesome/angular-fontawesome';
 import { far } from '@fortawesome/free-regular-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -21,10 +22,10 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     importProvidersFrom(FontAwesomeModule),
     {
-      provide: 'APP_INITIALIZER',
+      provide: APP_INITIALIZER,
       useFactory: (library: FaIconLibrary) => {
         return () => {
-          library.addIconPacks(far);
+          library.addIconPacks(far, fas);
         };
       },
       deps: [FaIconLibrary],

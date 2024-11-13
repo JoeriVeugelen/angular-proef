@@ -1,1 +1,18 @@
-<p>blog works!</p>
+<div class="blog">
+  <h4>Hoe verkoop je het beste een huis?</h4>
+  <div class="grid">
+    @for (blogItem of blogItems; track blogItem) {
+    <div class="gridItem">
+      <img class="gridItem__image" [src]="blogItem.image" alt="" srcset="" />
+      <div class="gridItem__content">
+        <p class="gridItem__title">{{ blogItem.title }}</p>
+        <p class="gridItem__description">{{ blogItem.description }}</p>
+        <a class="gridItem__pageUrl" [href]="blogItem.pageUrl">
+          <span class="link-text">Lees meer</span>
+          <fa-icon class="icon" [icon]="faAnglesRight"></fa-icon>
+        </a>
+      </div>
+    </div>
+    }
+  </div>
+</div>

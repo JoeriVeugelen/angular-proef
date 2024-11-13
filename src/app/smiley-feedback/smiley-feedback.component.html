@@ -2,8 +2,8 @@
   <div class="smiley-feedback">
     <h2>{{ question }}</h2>
     <div class="faces-container">
+      @for (face of faces; track face) {
       <button
-        *ngFor="let face of faces"
         (click)="selectFace(face)"
         [style.background-color]="face.backgroundColor"
         [class.selected]="selectedFace === face"
@@ -11,6 +11,7 @@
       >
         <fa-icon [style.color]="face.iconColor" [icon]="face.icon"></fa-icon>
       </button>
+      }
     </div>
   </div>
   <!-- <p *ngIf="selectedFace" class="feedback-message">
