@@ -14,6 +14,7 @@ import {
 } from '@fortawesome/angular-fontawesome';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -21,6 +22,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(),
     importProvidersFrom(FontAwesomeModule),
+    provideHttpClient(),
     {
       provide: APP_INITIALIZER,
       useFactory: (library: FaIconLibrary) => {

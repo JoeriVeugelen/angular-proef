@@ -1,12 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {
-  ReactiveFormsModule,
-  FormGroup,
-  FormControl,
-  Validators,
-} from '@angular/forms';
+import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 import {
   faMeh,
   faSmile,
@@ -14,6 +9,7 @@ import {
   faFaceLaughBeam,
   faFaceGrinHearts,
 } from '@fortawesome/free-regular-svg-icons';
+import { ApiService } from '../api.service';
 
 interface FeedbackFace {
   icon: any;
@@ -29,7 +25,7 @@ interface FeedbackFace {
   templateUrl: './smiley-feedback.component.html',
   styleUrls: ['./smiley-feedback.component.scss'],
 })
-export class SmileyFeedbackComponent {
+export class SmileyFeedbackComponent implements OnInit {
   @Input() question: string = 'Hoe eenvoudig kon je je huis online plaatsen?';
 
   faces: FeedbackFace[] = [
@@ -70,7 +66,7 @@ export class SmileyFeedbackComponent {
   showError: boolean = false;
   formSubmittedSuccessfully: boolean = false;
 
-  constructor() {
+  constructor(private apiService: ApiService) {
     this.feedbackForm = new FormGroup({
       comment: new FormControl(''),
     });
@@ -109,10 +105,19 @@ export class SmileyFeedbackComponent {
         rating: this.selectedFace.rating,
         comment: comment,
       };
-      console.log('Feedback submitted:', feedback);
-      // Here you would typically send the feedback to your server
-      this.resetForm();
-      this.formSubmittedSuccessfully = true;
+      console.log('Sending feedback to API...', feedback);
+      this.apiService
+        .postFeedback(feedback.rating, feedback.comment)
+        .subscribe({
+          next: (response) => {
+            console.log('Feedback submitted successfully:', response);
+            this.resetForm();
+            this.formSubmittedSuccessfully = true;
+          },
+          error: (error) => {
+            console.error('Error submitting feedback:', error);
+          },
+        });
     }
   }
 
